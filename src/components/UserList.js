@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from './../components/UserContext';
 
-const UserList = ({ users, onUserClick }) => {
+const UserList = () => {
+    const { users, setSelectedUser } = useContext(UserContext);
+
     return (
         <div
             style={{
@@ -9,26 +12,26 @@ const UserList = ({ users, onUserClick }) => {
                 overflowY: 'scroll',
                 borderRight: '1px solid #ccc',
                 padding: '10px',
-                backgroundColor: '#f4f4f4', // Light background for better clarity
-                boxShadow: '2px 0 5px rgba(0,0,0,0.1)', // Add shadow for separation
+                backgroundColor: '#f4f4f4',
+                boxShadow: '2px 0 5px rgba(0,0,0,0.1)',
             }}
         >
             {users.map(user => (
                 <div
                     key={user.id}
-                    onClick={() => onUserClick(user)}
+                    onClick={() => setSelectedUser(user)} // Set the selected user
                     style={{
                         padding: '10px',
                         cursor: 'pointer',
                         borderBottom: '1px solid #ddd',
-                        marginBottom: '10px', // Add spacing between items
-                        backgroundColor: '#fff', // White background for each item
-                        borderRadius: '5px', // Rounded corners for each item
-                        boxShadow: '0 2px 5px rgba(0,0,0,0.1)', // Subtle shadow for each item
-                        transition: 'background-color 0.3s', // Smooth transition for hover effect
+                        marginBottom: '10px',
+                        backgroundColor: '#fff',
+                        borderRadius: '5px',
+                        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                        transition: 'background-color 0.3s',
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e0e0e0'} // Change background on hover
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff'} // Reset background on hover out
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e0e0e0'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#fff'}
                 >
                     <p><strong>{user.name}</strong></p>
                     <p>{user.email}</p>

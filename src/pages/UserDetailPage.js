@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import UserList from '../components/UserList';
-import UserDetails from '../components/UserDetails';
+import UserList from './components/UserList';
+import UserDetails from './components/UserDetails';
 
 const UserDetailPage = () => {
     const [users, setUsers] = useState([]);

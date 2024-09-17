@@ -1,14 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, } from 'react-router-dom';
-import UserDetailPage from './pages/UserDetailPage';
+import { UserProvider } from './components/UserContext';
+import UserList from './components/UserList';
+import UserDetails from './components/UserDetails';
 
 function App() {
   return (
-    <Router>
-    <div>
-      <UserDetailPage />
-    </div> 
-    </Router>
+    <UserProvider>
+      <div style={{ display: 'flex' }}>
+        <UserList />
+        <UserDetails />
+      </div>
+    </UserProvider>
   );
 }
 
